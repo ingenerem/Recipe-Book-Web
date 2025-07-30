@@ -2,6 +2,8 @@ import { Input } from "postcss"
 import { Fragment } from "react/jsx-runtime"
 import RecipeList from "./components/RecipeList"
 import RecipeCard from "./components/RecipeCard"
+import RecipeForm from "./components/RecipeForm"
+import React, { useState } from "react";
 
 
 
@@ -29,6 +31,9 @@ function Footer() {
 }
 
 function MainPage() {
+
+  const [showForm, setShowForm] = useState(false);
+  
   return (
     <>
       <div className="flex flex-col max-w-3xl mx-auto max-h-screen min-h-screen ">
@@ -39,11 +44,12 @@ function MainPage() {
           <input className="p-2 rounded-md bg-white border border-black  placeholder-orange-950 w-[500px] h-10" placeholder="Search recipes..." />
           <button className="bg-[#250905] text-white rounded-2xl px-6 h-12">Search</button>
        
-        <button className="bg-[#2f110d] text-white text-3xl font-medium w-[610px] text-stone-300 rounded-3xl h-20">+Add a recipe</button>
+        <button onClick={() => setShowForm(true)} className="bg-[#2f110d] text-white text-3xl font-medium w-[610px] text-stone-300 rounded-3xl h-20"
+        >+Add a recipe</button>
+      
          </div>
-        <main className=" bg-stone-700 p-8 rounded flex-grow overflow-auto hide-scroll">
-
-
+         
+        <main className=" bg-[#999191] p-16 rounded flex-grow overflow-auto hide-scroll">
 
           <div className="rec-cards ">
             <RecipeCard title="Chocolate Cake" desc="Rich and moist dessert" />
@@ -56,6 +62,7 @@ function MainPage() {
         <Footer />
 
       </div>
+   
 
     </>
 
